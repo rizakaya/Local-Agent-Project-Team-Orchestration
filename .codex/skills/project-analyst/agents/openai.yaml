@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Analyst"
+  short_description: "Proje fikirlerini gereksinim dokümanýna dönüþtürür."
+  default_prompt: "Kullanýcý fikrinden kapsam, gereksinimler, kabul kriterleri ve açýk sorular içeren analiz dokümaný üret."

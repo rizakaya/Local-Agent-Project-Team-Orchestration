@@ -1,0 +1,23 @@
+# Visual Studio user state and caches
+.vs/
+**/.vs/
+
+# .NET build outputs
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Runtime state, logs, and generated reports
+LocalAgentProjectTeamOrchestration/data/session-state.json
+LocalAgentProjectTeamOrchestration/data/*.tmp
+LocalAgentProjectTeamOrchestration/logs/
+LocalAgentProjectTeamOrchestration/outputs/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.user
+*.suo
+*.userosscache
+*.sln.docstates

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Lead"
+  short_description: "Yerel model proje ekibini orkestre eder."
+  default_prompt: "Proje fikrini al, analizci, yazýlýmcý ve testçi rollerini lider yönetimli akýþla koordine et."

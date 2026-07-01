@@ -1,0 +1,22 @@
+[
+  { "id": "GT-01", "prompt": "Create a structured TaskAnalysis for a bug report.", "expectedTopic": "TaskAnalysis" },
+  { "id": "GT-02", "prompt": "List tool calling entries for ReadFile SearchCode RunTests.", "expectedTopic": "ReadFile" },
+  { "id": "GT-03", "prompt": "Show handoff from Analyst to Developer to Tester.", "expectedTopic": "handoff" },
+  { "id": "GT-04", "prompt": "Explain state memory and context differences.", "expectedTopic": "memory" },
+  { "id": "GT-05", "prompt": "Run graph ParseIssue AnalyzeImpact RiskReview FinalReport.", "expectedTopic": "ParseIssue" },
+  { "id": "GT-06", "prompt": "Show permission levels ReadOnly Execute Write Dangerous.", "expectedTopic": "ReadOnly" },
+  { "id": "GT-07", "prompt": "Discover tools through a ToolServer abstraction.", "expectedTopic": "ToolServer" },
+  { "id": "GT-08", "prompt": "Apply allowlist blocklist and whitelist security.", "expectedTopic": "allowlist" },
+  { "id": "GT-09", "prompt": "Check input tool output and cost guardrails.", "expectedTopic": "guardrails" },
+  { "id": "GT-10", "prompt": "Write AgentRun AgentStep ToolCall trace logs.", "expectedTopic": "AgentRun" },
+  { "id": "GT-11", "prompt": "Evaluate a golden task set.", "expectedTopic": "golden" },
+  { "id": "GT-12", "prompt": "Combine analyzer tools guardrails trace evaluation.", "expectedTopic": "evaluation" },
+  { "id": "GT-13", "prompt": "Persist session-state.json for resume.", "expectedTopic": "session-state" },
+  { "id": "GT-14", "prompt": "Append long lived notes to memory.md.", "expectedTopic": "memory.md" },
+  { "id": "GT-15", "prompt": "Log conversations to Markdown.", "expectedTopic": "Markdown" },
+  { "id": "GT-16", "prompt": "Cancel an active run with a stop command.", "expectedTopic": "stop" },
+  { "id": "GT-17", "prompt": "Use Ollama local models for roles.", "expectedTopic": "Ollama" },
+  { "id": "GT-18", "prompt": "Map Developer to qwen3-coder.", "expectedTopic": "qwen3-coder" },
+  { "id": "GT-19", "prompt": "Show tool permission matrix.", "expectedTopic": "permission" },
+  { "id": "GT-20", "prompt": "Generate a final report from graph state.", "expectedTopic": "final" }
+]

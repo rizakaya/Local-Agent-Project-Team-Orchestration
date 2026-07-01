@@ -1,0 +1,3 @@
+display_name: Project Developer
+short_description: Plans and builds scoped .NET changes.
+default_prompt: Onayli gereksinimlerden uygulanabilir .NET gelistirme plani, kod degisiklikleri ve dogrulama adimlari uret.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Tester"
+  short_description: "Test senaryolarý, riskler ve kabul kontrolleri üretir."
+  default_prompt: "Gereksinim ve geliþtirme çýktýsýna göre test planý, hata riskleri ve kabul kontrol listesi hazýrla."
