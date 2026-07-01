@@ -31,9 +31,9 @@ internal sealed record AppConfig(
     private static AppConfig Defaults() => new(
         new OllamaConfig("http://localhost:11434"),
         new ModelConfig("qwen3.6:latest", "qwen3.6:latest", "qwen3-coder:30b", "gemma3:12b"),
-        new SkillConfig(@"..\.codex\skills"),
+        new SkillConfig(@"..\.skills\skills"),
         new MemoryConfig(24),
-        new SecurityConfig([".", "outputs", @"..\.codex\skills"], ["api_key", "apikey", "secret", "password", "token", "bearer "], ["dotnet build", "dotnet test", "dotnet run"]),
+        new SecurityConfig([".", "outputs", @"..\.skills\skills"], ["api_key", "apikey", "secret", "password", "token", "bearer "], ["dotnet build", "dotnet test", "dotnet run"]),
         new GuardrailConfig(12000, 20000, 50000));
 }
 
