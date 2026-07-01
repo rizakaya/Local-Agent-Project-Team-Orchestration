@@ -37,6 +37,22 @@ internal sealed class AgentFactory(AppPaths paths, AppConfig config)
 
         return new AgentDefinition(role, role.ToString(), model, prompt);
     }
+
+    public AgentDefinition CreateImplementationDeveloper()
+    {
+        var developer = Create(AgentRole.Developer);
+        var implementationPrompt = $"""
+        {developer.SystemPrompt}
+
+        Implementation mode override:
+        The normal Developer Plan output format is disabled for this request.
+        You must generate real project files only.
+        Output only fenced file blocks starting with ```file:relative/path.
+        Do not include prose, analysis, summaries, or markdown sections outside file blocks.
+        """;
+
+        return developer with { SystemPrompt = implementationPrompt };
+    }
 }
 
 internal sealed class OllamaAgentClient(HttpClient httpClient, string baseUrl)
@@ -88,6 +104,27 @@ internal static class PromptBuilder
             {recent}
 
             Artifacts:
+            {artifactText}
+            """)
+        ];
+    }
+
+    public static List<ChatMessage> BuildImplementation(string roleInstruction, string idea, string memory, params string[] artifacts)
+    {
+        var artifactText = string.Join(Environment.NewLine + Environment.NewLine, artifacts.Where(a => !string.IsNullOrWhiteSpace(a)).Select(a => Trim(a, 5000)));
+        return
+        [
+            new("user", $"""
+            Implementation request:
+            {roleInstruction}
+
+            Current idea:
+            {idea}
+
+            Short memory:
+            {Trim(memory, 1200)}
+
+            Required source artifacts:
             {artifactText}
             """)
         ];

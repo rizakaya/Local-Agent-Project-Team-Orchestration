@@ -46,7 +46,7 @@ internal static class Program
         var evaluator = new EvaluationHarness(paths, console, traceWriter);
 
         await console.SystemAsync("Local Agent Project Team Orchestration");
-        await console.SystemAsync("Commands: /idea <text>, /analyze, /run, /graph, /tools, /outputs, /state, /history, /eval, /stop, /reset, /exit");
+        await console.SystemAsync("Commands: /idea <text>, /analyze, /run, /implement, /graph, /tools, /outputs, /state, /history, /eval, /stop, /reset, /exit");
         await console.SystemAsync($"State: {paths.SessionStatePath}");
 
         var loop = new CommandLoop(

@@ -57,6 +57,10 @@ internal sealed class CommandLoop(
                     case "/run":
                         await StartRunAsync(ct => orchestrator.RunTeamAsync(_session, ct));
                         break;
+                    case "/implement":
+                        _session = await orchestrator.ImplementAsync(_session, CancellationToken.None);
+                        await sessionStore.SaveAsync(_session);
+                        break;
                     case "/graph":
                         await StartRunAsync(ct => graphRunner.RunAsync(_session, ct));
                         break;

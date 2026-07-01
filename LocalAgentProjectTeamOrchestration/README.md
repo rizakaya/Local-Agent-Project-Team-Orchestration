@@ -36,6 +36,7 @@ dotnet run --project LocalAgentProjectTeamOrchestration.Console
 /idea Bir issue analyzer + local model orchestration araci yapalim
 /analyze
 /run
+/implement
 /graph
 /tools
 /outputs
@@ -50,6 +51,7 @@ dotnet run --project LocalAgentProjectTeamOrchestration.Console
 - `/idea <metin>` aktif proje fikrini kaydeder.
 - `/analyze` structured `TaskAnalysis` uretir ve JSON olarak gosterir.
 - `/run` Lead -> Analyst -> Developer -> Tester -> Lead ekip konusmasini baslatir.
+- `/implement` son analiz ve developer planina gore gercek proje dosyalarini `outputs/project` altina uretir.
 - `/graph` ParseIssue -> AnalyzeImpact -> RiskReview -> FinalReport akisini calistirir.
 - `/tools` tool registry ve permission matrix'i gosterir.
 - `/outputs` analiz, yazilimci, testci, lider ve uretilen proje klasorlerini gosterir.
@@ -102,6 +104,35 @@ Console.WriteLine("Hello from generated project");
 ````
 
 Bu bloklar guvenli sekilde `outputs/project/src/MyGeneratedProject/Program.cs` altina yazilir. Mutlak path veya `..` iceren path'ler kabul edilmez.
+
+Kod uretim akisi bilincli olarak `/implement` komutuyla ayrilmistir. `/run` ekibin analiz, plan ve test konusmasini yapar; `/implement` once son Developer yanitindaki `file:` bloklarini dosyaya yazar. Developer daha once dosya blogu uretmediyse uygulama bos kalmamak icin calisan bir `TodoConsole` fallback projesi olusturur.
+
+Tipik akis:
+
+```text
+/idea todos uygulamasi yapalim. .net console olsun ve listeyi local JSON dosyada tutsun.
+/analyze
+/run
+/implement
+/outputs
+```
+
+`/implement` her yeni uygulama icin ayri bir klasor acar. Klasor adi fikir turunden ve zaman damgasindan olusur; boylece yeni proje eski projenin ustune yazmaz.
+
+`/implement` sonrasi ornek beklenen dosyalar:
+
+```text
+outputs/project/TodoConsole-20260701-225000/TodoConsole.csproj
+outputs/project/TodoConsole-20260701-225000/Program.cs
+outputs/project/DiceConsole-20260701-225228/DiceConsole.csproj
+outputs/project/DiceConsole-20260701-225228/Program.cs
+```
+
+Uretilen proje ayrica derlenebilir:
+
+```powershell
+dotnet build outputs/project/TodoConsole/TodoConsole.csproj
+```
 
 ## 12 Haftalik Konular Nerede?
 
@@ -174,9 +205,10 @@ stateDiagram-v2
 2. `/idea` ile kullanici fikri state'e yazilir.
 3. `/analyze` JSON structured output uretir.
 4. `/run` skill dosyalarindan system prompt olusturur ve Ollama'daki yerel modelleri cagirir.
-5. Her agent yanitindan sonra state, memory, conversation log, trace ve role output dosyalari guncellenir.
-6. Developer yanitindaki `file:` kod bloklari `outputs/project` altina yazilir.
-7. Uygulama kapatilip acildiginda `/state` ve `/history` kaldigi baglami gosterir.
+5. `/implement` Developer modelini kod uretim modunda cagirir.
+6. Her agent yanitindan sonra state, memory, conversation log, trace ve role output dosyalari guncellenir.
+7. Developer yanitindaki `file:` kod bloklari `outputs/project` altina yazilir.
+8. Uygulama kapatilip acildiginda `/state` ve `/history` kaldigi baglami gosterir.
 
 ## Model Eslesmeleri
 

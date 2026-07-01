@@ -87,6 +87,7 @@ internal sealed record SessionState
     public string DeveloperOutput { get; init; } = "";
     public string TesterOutput { get; init; } = "";
     public string LeadOutput { get; init; } = "";
+    public string LastProjectOutputDirectory { get; init; } = "";
     public IssueAnalysisState GraphState { get; init; } = new();
     public List<ConversationMessage> Messages { get; init; } = [];
 
